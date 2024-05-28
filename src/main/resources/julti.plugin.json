@@ -1,0 +1,6 @@
+{
+  "name": "Julti Spotify Controller",
+  "id": "julti-spotify-controller",
+  "version": "${version}",
+  "initializer": "me.itsdxrk.spotifycontrol.JultiSpotifyController"
+}
