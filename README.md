@@ -8,6 +8,8 @@ Unintentionally, the plugin sometimes works when other media is playing while th
 
 A delay may occur when pausing/playing the media. This is due to how the check is performed every 5 seconds, and so the delay in pausing/playing after a certain event may sometimes be longer than other times. I would make the delay between checks shorter, however this would hinder the performance of Julti far too much than is already being done.
 
+Starting Julti while Spotify is **minimised in the system tray** will make it unable to detect Spotify, so please launch Julti while Spotify is unminimised. You are able to minimise it once the initialisation of Julti has finished.
+
 # SETUP
 * In Julti, go to the Plugins section and Open Plugins Folder
 * Place the [plugin](https://github.com/itsdxrk/JultiSpotifyController/releases/latest) in the folder.

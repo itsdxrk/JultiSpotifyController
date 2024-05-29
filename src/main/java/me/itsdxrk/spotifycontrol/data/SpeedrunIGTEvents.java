@@ -19,7 +19,7 @@ public class SpeedrunIGTEvents {
     private Path worldPath = null;
     private Path latestWorld = Paths.get(System.getProperty("user.home")).resolve("speedrunigt").resolve("latest_world.json").toAbsolutePath();
     private Path eventLog;
-    private static final List<String> END_EVENTS = Arrays.asList("common.leave_world", "common.multiplayer", "common.old_world", "common.open_to_lan", "common.enable_cheats", "common.view_seed", "rsg.credits");
+    private static final List<String> END_EVENTS = Arrays.asList("common.leave_world", "common.multiplayer", "common.old_world", "common.open_to_lan", "common.enable_cheats", "rsg.credits");
     private static final List<String> IMPORTANT_EVENTS = Arrays.asList("rsg.enter_nether", "rsg.enter_bastion", "rsg.enter_fortress", "rsg.first_portal", "rsg.enter_stronghold", "rsg.enter_end");
     private void getEventLog() {
         eventLog = this.worldPath.resolve("speedrunigt").resolve("events.log");
