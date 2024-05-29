@@ -34,14 +34,14 @@ public class JultiSpotifyController implements PluginInitializer {
         // This gets run once when Julti launches
         SpotifyControllerInit.init();
         SpotifyControlAPI.init();
-        Julti.log(Level.INFO, "Julti Spotify Controller Initialized");
         SpotifyControllerOptions options;
         try {
             options = SpotifyControllerOptions.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        Julti.log(Level.INFO, "Julti Spotify Controller Initialized | Current Split: " + options.triggerEvent.split("\\.")[1]);
+        
         SpeedrunIGTEvents srigtEvents = new SpeedrunIGTEvents();
         EXECUTOR.scheduleWithFixedDelay(() -> {
             try {
