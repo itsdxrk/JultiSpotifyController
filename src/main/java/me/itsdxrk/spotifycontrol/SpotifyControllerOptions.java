@@ -16,6 +16,7 @@ public class SpotifyControllerOptions {
 
     public int triggerID = 1;
     public String triggerEvent = "rsg.enter_bastion";
+    public boolean enabled = true;
 
     public static void save() throws IOException {
         FileWriter writer = new FileWriter(SAVE_PATH.toFile());

@@ -14,6 +14,7 @@ public class SpotifyControllerGUI extends JFrame {
     private static SpotifyControllerGUI instance = null;
 
     private JPanel mainPanel;
+    private JCheckBox enabledBox;
     private JButton saveButton;
     private final JRadioButton netherBtn = new JRadioButton("Nether");
     private final JRadioButton bastionBtn = new JRadioButton("Bastion");
@@ -37,6 +38,7 @@ public class SpotifyControllerGUI extends JFrame {
                 SpotifyControllerGUI.this.onClose();
             }
         });
+
         saveButton.addActionListener(e -> this.save());
 
         netherBtn.addActionListener(e -> {
@@ -61,6 +63,7 @@ public class SpotifyControllerGUI extends JFrame {
         SpotifyControllerOptions options = SpotifyControllerOptions.getInstance();
 
         buttonGroup.setSelected(buttons.get(options.triggerID).getModel(), true);
+        enabledBox.setSelected(options.enabled);
 
         this.revalidate();
         this.setMinimumSize(new Dimension(500, 50));
@@ -72,6 +75,7 @@ public class SpotifyControllerGUI extends JFrame {
     private void setupWindow() {
         mainPanel = new JPanel();
         saveButton = new JButton("Save");
+        enabledBox = new JCheckBox();
 
         buttonGroup.add(netherBtn);
         buttonGroup.add(bastionBtn);
@@ -81,6 +85,8 @@ public class SpotifyControllerGUI extends JFrame {
         buttonGroup.add(endBtn);
 
         mainPanel.add(saveButton);
+        mainPanel.add(new JLabel("Enabled"));
+        mainPanel.add(enabledBox);
         mainPanel.add(netherBtn);
         mainPanel.add(bastionBtn);
         mainPanel.add(fortBtn);
@@ -94,6 +100,10 @@ public class SpotifyControllerGUI extends JFrame {
         buttons.add(fpBtn);
         buttons.add(strongholdBtn);
         buttons.add(endBtn);
+    }
+
+    private boolean pluginEnabled() {
+        return this.enabledBox.isSelected();
     }
 
     public static SpotifyControllerGUI open(Point initialLocation) {
@@ -112,6 +122,7 @@ public class SpotifyControllerGUI extends JFrame {
         SpotifyControllerOptions options = SpotifyControllerOptions.getInstance();
         options.triggerID = triggerID;
         options.triggerEvent = triggerEvent;
+        options.enabled = this.pluginEnabled();
         try {
             SpotifyControllerOptions.save();
         } catch (IOException e) {

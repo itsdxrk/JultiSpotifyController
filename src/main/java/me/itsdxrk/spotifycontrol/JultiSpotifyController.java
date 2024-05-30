@@ -45,7 +45,7 @@ public class JultiSpotifyController implements PluginInitializer {
         SpeedrunIGTEvents srigtEvents = new SpeedrunIGTEvents();
         EXECUTOR.scheduleWithFixedDelay(() -> {
             try {
-                srigtEvents.getEvent();
+                if (options.enabled) srigtEvents.getEvent();
             } catch (Throwable t) {
                 Julti.log(Level.ERROR, "Spotify Controller Error: " + ExceptionUtil.toDetailedString(t));
             }
